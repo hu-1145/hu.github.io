@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>RT's train</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    .hero {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5em;
+      opacity: 0;
+      scale: 0.5;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">Welcome To RT's train Web!</div>
+  <div class="fade-in" style="position:absolute; bottom:50px; left:50px; font-size:1.5em;">欢迎来到RT的动车厂</div>
+
+  <!-- 引入 GSAP 动画库 -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script>
+    window.onload = () => {
+      // 主动画时间轴
+      const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 1 } });
+
+      // Hero 动画
+      tl.to(".hero", {
+        scale: 1,
+        opacity: 1,
+        duration: 1.2,
+        ease: "back.out(1.7)"
+      });
+
+      // 渐入底部文字
+      tl.to(".fade-in", {
+        y: 0,
+        opacity: 1
+      }, "-=0.5"); // 同步开始
+    };
+  </script>
+</body>
+</html>
